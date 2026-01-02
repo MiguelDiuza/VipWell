@@ -27,10 +27,10 @@ function renderHeroComponent() {
             <!-- Left Content -->
             <div class="text-left pt-20 pb-20 lg:pt-0 lg:pl-8">
                 <div class="inline-block px-3 py-1 mb-6 border border-orange-500 rounded-full text-orange-400 text-xs tracking-widest uppercase font-bold bg-slate-900/80 backdrop-blur-sm shadow-lg">
-                    Hub Logístico en Europa — Alcance Global
+                    Logística en Europa — Alcance Global
                 </div>
                 <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight drop-shadow-lg">
-                    Soluciones Integrales en <br>
+                    VIPWELL EUROPE<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Maquinaria y Plástico</span>
                 </h1>
                 <div class="pl-6 border-l-4 border-orange-500 mb-10 bg-slate-900/40 p-4 rounded-r-lg max-w-xl backdrop-blur-sm">
