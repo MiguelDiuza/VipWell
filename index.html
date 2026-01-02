@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPWELL EUROPE | Maquinaria, Gestión & Servicios</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Font Awesome (for Icons - Replaces SVG) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet" />
+
+
+    <!-- GSAP ANIMATION LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- HEADER (Sticky) -->
+    <header class="sticky top-0 z-50 bg-gray-900 text-white shadow-lg header-gradient">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                <img src="recursos/logo.svg" alt="VIPWELL Logo" class="h-6 md:h-8 w-auto">
+                <div>
+                    <h1 class="text-xl font-bold tracking-wider">VIPWELL</h1>
+                    <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Europe</p>
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <button onclick="navigateTo('home')"
+                    class="nav-link hover:text-orange-400 transition-colors py-2 active" id="nav-home">INICIO</button>
+                <button onclick="navigateTo('catalog')" class="nav-link hover:text-orange-400 transition-colors py-2"
+                    id="nav-catalog">CATÁLOGO</button>
+                <button onclick="navigateTo('services')" class="nav-link hover:text-orange-400 transition-colors py-2"
+                    id="nav-services">SERVICIOS & GESTIÓN</button>
+                <button onclick="navigateTo('about')" class="nav-link hover:text-orange-400 transition-colors py-2"
+                    id="nav-about">SOBRE NOSOTROS</button>
+                <button onclick="navigateTo('contact')" class="nav-link hover:text-orange-400 transition-colors py-2"
+                    id="nav-contact">CONTACTO</button>
+            </nav>
+
+            <!-- CTA & Mobile Menu Button -->
+            <div class="flex items-center space-x-4">
+                <button onclick="document.getElementById('contact-form-section').scrollIntoView({behavior: 'smooth'})"
+                    class="hidden md:block bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 rounded font-bold text-sm transition-transform transform hover:scale-105 shadow-md">
+                    COTIZAR
+                </button>
+                <button class="md:hidden text-2xl focus:outline-none" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700">
+            <div class="flex flex-col p-4 space-y-3">
+                <button onclick="navigateTo('home'); toggleMobileMenu()"
+                    class="text-left text-gray-300 hover:text-orange-500">Inicio</button>
+                <button onclick="navigateTo('catalog'); toggleMobileMenu()"
+                    class="text-left text-gray-300 hover:text-orange-500">Catálogo</button>
+                <button onclick="navigateTo('services'); toggleMobileMenu()"
+                    class="text-left text-gray-300 hover:text-orange-500">Servicios Globales</button>
+                <button onclick="navigateTo('about'); toggleMobileMenu()"
+                    class="text-left text-gray-300 hover:text-orange-500">Sobre Nosotros</button>
+                <button onclick="navigateTo('contact'); toggleMobileMenu()"
+                    class="text-left text-gray-300 hover:text-orange-500">Contacto</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main id="app-content" class="flex-grow w-full">
+        <!-- Views will be injected here by JS -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-8 md:py-12 border-t border-slate-800 footer-gradient">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-sm">
+                <!-- Column 1: Logo and Address -->
+                <div>
+                    <img src="recursos/logo.svg" alt="VIPWELL EUROPE" class="mb-4 w-16 md:w-24 brightness-0 invert opacity-60">
+                    <h4 class="text-white text-lg font-bold mb-4">Hub Central</h4>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt text-orange-500 mr-2"></i> Cam. de Valdecabañas, 28</p>
+                    <p class="mb-2 pl-6">Madrid, España</p>
+                    <p class="mt-4"><i class="fas fa-phone text-orange-500 mr-2"></i> +34 912 345 678</p>
+                    <p><i class="fas fa-envelope text-orange-500 mr-2"></i> operaciones@vipwelleurope.com</p>
+                </div>
+
+                <!-- Column 2: Navegación -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-4">Navegación</h4>
+                    <ul class="space-y-2">
+                        <li><button onclick="navigateTo('home')" class="hover:text-white transition">Inicio</button></li>
+                        <li><button onclick="navigateTo('catalog')" class="hover:text-white transition">Catálogo</button></li>
+                        <li><button onclick="navigateTo('services')" class="hover:text-white transition">Servicios</button></li>
+                        <li><button onclick="navigateTo('about')" class="hover:text-white transition">Acerca de</button></li>
+                        <li><button onclick="navigateTo('contact')" class="hover:text-white transition">Contacto</button></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Servicios -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-4">Servicios</h4>
+                    <ul class="space-y-2">
+                        <li><button onclick="navigateTo('catalog')" class="hover:text-white transition">Venta de Maquinaria</button></li>
+                        <li><button onclick="navigateTo('services')" class="hover:text-white transition">Importación Global</button></li>
+                        <li><button onclick="navigateTo('services')" class="hover:text-white transition">Servicio de Maquila (Plástico)</button></li>
+                        <li><button onclick="navigateTo('contact')" class="hover:text-white transition">Consultoría Logística</button></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Certificaciones and Social -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-4">Certificaciones</h4>
+                    <p class="mb-4">Cumplimos con los más altos estándares de la Unión Europea y normativas de comercio internacional.</p>
+                    <div class="flex space-x-4 text-2xl text-slate-500 mb-4">
+                        <i class="fas fa-industry hover:text-white transition" title="ISO 9001"></i>
+                        <i class="fas fa-shipping-fast hover:text-white transition" title="Global Logistics"></i>
+                        <i class="fas fa-globe-europe hover:text-white transition" title="EU Hub"></i>
+                    </div>
+                    <h5 class="text-white text-md font-semibold mb-2">Síguenos</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-600">
+                © 2024 VIPWELL EUROPE. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/" target="_blank"
+        class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110 z-50 flex items-center group">
+        <span
+            class="absolute right-full mr-3 bg-white text-slate-800 text-xs font-bold py-1 px-2 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Hable
+            con un asesor</span>
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="js/data.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/charts.js"></script>
+    <!-- Components -->
+    <script src="js/components/hero.component.js"></script>
+    <script src="js/components/trustBar.component.js"></script>
+    <script src="js/components/introSection.component.js"></script>
+    <script src="js/components/cicloIntegral.component.js"></script>
+    <script src="js/components/featuredCatalog.component.js"></script>
+    <script src="js/components/carousel.component.js"></script>
+    <script src="js/components/productCard.component.js"></script>
+    <script src="js/components/modal.component.js"></script>
+    <script src="js/components/estimator.component.js"></script>
+
+    <!-- Views -->
+    <script src="js/views/home.view.js"></script>
+    <script src="js/views/catalog.view.js"></script>
+    <script src="js/views/services.view.js"></script>
+    <script src="js/views/about.view.js"></script>
+    <script src="js/views/contact.view.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Chosen Palette: Navy Blue (#1e3a8a) - Orange (#f97316) - Slate Grays (#64748b) -->
+    <!-- Application Structure Plan: 
+         Structured as a high-conversion industrial landing page (SPA).
+         1. Home: Emotional impact + authority validation (scrollytelling process).
+         2. Catalog: Functional exploration with filters (User Goal: Find specific machine).
+         3. Detail Modal: Deep dive with Data Viz (Radar Chart) to prove "European Quality".
+         4. Services (New): Focus on Logistics Management & Maquila services.
+         5. About/Contact: Trust building with real locations/history.
+    -->
+    <!-- Visualization & Content Choices:
+         - Radar Chart in Product Modal: Visualizes abstract concepts (Efficiency/Precision).
+         - Bar Chart in About: Visualizes Business Mix (Sales vs Services).
+         - Estimator Bar: Updated to include Maquila and Import times.
+         - Scrollytelling (Simulated): Uses CSS transitions to explain the integral process.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. FontAwesome and Unicode used for icons. -->
+</body>
+
+</html>

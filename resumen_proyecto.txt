@@ -1,0 +1,67 @@
+RESUMEN DEL PROYECTO: VIPWELL EUROPE
+
+Este proyecto es una aplicación web de una sola página (SPA - Single Page Application) diseñada para VipWell Europe, una empresa especializada en la gestión, venta e importación de maquinaria industrial y servicios de producción de plásticos. La arquitectura se basa en JavaScript modular (estilo clásico de scripts globales) cargado de forma secuencial.
+
+--- ESTRUCTURA DE SCRIPTS Y RELACIONES ---
+
+El proyecto organiza su lógica en varios archivos especializados que se comunican a través del ámbito global (window):
+
+1. index.html:
+   Es el esqueleto del sitio. Carga las dependencias externas (Tailwind CSS, GSAP, Chart.js, Font Awesome) y los scripts locales en un orden específico para asegurar que las dependencias estén disponibles.
+
+2. js/state.js:
+   Se encarga de mantener el "estado" de la aplicación. Por ejemplo, guarda cuál es la vista actual que el usuario está viendo y referencias a elementos principales del DOM como el contenedor 'main-content'.
+
+3. js/data.js:
+   Actúa como la base de datos local. Contiene arreglos de objetos con la información de los productos del catálogo, los servicios y los pasos de la animación "Ciclo Integral". Separar los datos permite actualizar el contenido sin tocar la lógica.
+
+4. js/views.js:
+   Es el corazón visual. Contiene las funciones que generan el HTML de cada sección del sitio. Utiliza "Template Literals" de JavaScript para construir la interfaz de forma dinámica.
+
+5. js/navigation.js:
+   Controla el "enrutamiento" o navegación. Contiene la función `navigateTo(viewName)`, que limpia el contenido actual, llama a la función de renderizado correspondiente en 'views.js' y activa las animaciones o scripts necesarios para esa vista.
+
+6. js/components.js:
+   Contiene la lógica interactiva reutilizable:
+   - Ventanas modales para detalles de productos.
+   - Carruseles de imágenes.
+   - Efectos de Parallax en el Hero.
+   - La animación GSAP avanzada del "Ciclo Integral".
+
+7. js/charts.js:
+   Gestiona la visualización de datos mediante Chart.js, específicamente cargando los gráficos estadísticos en la sección "Sobre Nosotros".
+
+8. js/main.js:
+   Es el punto de entrada. Se ejecuta cuando el DOM está listo, inicializa la navegación en la página de inicio ('home') y expone funciones necesarias al ámbito global.
+
+--- DETALLE DE VISTAS (js/views.js) ---
+
+El archivo 'views.js' maneja las siguientes vistas principales:
+
+1. renderHome (Inicio):
+   - Hero Section: Con imagen de maquinaria con efecto parallax.
+   - Trust Bar: Iconos con valores clave de la empresa.
+   - Ciclo Integral: Sección interactiva con animaciones GSAP que explica el proceso de Sourcing, Importación y Maquila.
+   - Preview del Catálogo: Un carrusel con las máquinas destacadas.
+
+2. renderCatalog (Catálogo):
+   - Sistema de Filtros: Botones para filtrar por tipo de maquinaria (Inyección, Extrusión, Robótica).
+   - Grid de Productos: Tarjetas generadas dinámicamente con fotos y especificaciones técnicas.
+   - Modal de Detalle: Una ventana emergente que muestra la ficha técnica completa de cada máquina.
+
+3. renderServices (Servicios y Gestión):
+   - Pilares de Servicio: Explicación detallada de Sourcing Global, Maquila y Diseño a Medida.
+   - Estimador de Proyectos: Una herramienta interactiva donde el usuario puede calcular tiempos estimados según el tipo de gestión industrial requerida.
+
+4. renderAbout (Sobre Nosotros):
+   - Historia de la empresa: Narrativa sobre los 20 años de experiencia.
+   - Gráfico de Impacto Global: Visualización interactiva de las operaciones de la empresa.
+   - Valores Operativos: Cuadros destacados sobre gestión y respaldo industrial.
+
+5. renderContact (Contacto):
+   - Información Corporativa: Dirección física en Madrid, teléfonos y correos.
+   - Mapa Interactivo: Ubicación integrada mediante Google Maps.
+   - Formulario de Contacto: Interfaz para que los clientes envíen solicitudes de cotización o asesoría.
+
+-----------------------------------------------------------
+Diseñado para una experiencia premium, interactiva y rápida.
