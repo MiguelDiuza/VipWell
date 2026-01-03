@@ -1,77 +1,153 @@
 function renderHeroComponent() {
-    return `
-    <!-- HERO SECTION (Updated) -->
-    <section class="relative bg-slate-900 text-white min-h-screen flex items-center overflow-hidden">
-        <!-- Parallax Background -->
-        <div class="parallax-layer absolute inset-0 z-0 scale-110" data-speed="0.2">
-            <img src="recursos/bg.png" alt="Background" class="w-full h-full object-cover opacity-60">
+  return `
+    <!-- HERO SECTION (Nuevo Diseño) -->
+    <section class="relative bg-slate-900 text-white flex items-center overflow-hidden hero-section-height">
+      <!-- Background Image -->
+      <div class="parallax-layer absolute inset-0 z-0" data-speed="0.05">
+        <img src="recursos/bg.jpeg" alt="Background" class="w-full h-full object-cover hero-bg-position">
+      </div>
+
+      <!-- Shadow Overlay (creates contrast for buttons over machines) -->
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-slate-900/60 z-0"></div>
+
+      <!-- Logo Background (Behind machines, low opacity) -->
+      <div class="hero-logo-bg pointer-events-none">
+          <img src="recursos/logo.svg" alt="VipWell Logo Background" class="w-full h-auto">
+      </div>
+
+      <!-- Container Principal -->
+      <div class="container mx-auto px-4 z-10 relative h-full flex flex-col justify-between hero-padding-top pb-0">
+        
+        <!-- Top Section: Glass Cards and Titles -->
+        <div class="w-full flex flex-col items-center relative z-20">
+          
+          <!-- Wrapper for Cards and Badge -->
+          <div class="w-full flex flex-col md:flex-row justify-between items-start mb-4">
+            
+            <!-- Left Card Group -->
+            <div class="hidden lg:flex flex-col items-start">
+              <div class="hero-glass-card">
+                <h4>+20 AÑOS</h4>
+                <p>gestionando venta, importación de maquinaria y servicios de producción desde nuestra planta en Europa.</p>
+                <div class="seal-icon">
+                  <i class="fas fa-award"></i>
+                </div>
+              </div>
+              
+              <!-- Slogan below left card -->
+              <div class="hero-slogan mt-4 ml-2">
+                <i class="fas fa-check-circle"></i>
+                Liderazgo Industrial Europeo
+              </div>
+            </div>
+
+            <!-- Central Titles -->
+            <div class="flex-1 text-center mt-4">
+              <!-- Top Badge (Solo texto blanco) -->
+              <div class="text-white text-[10px] md:text-xs tracking-[0.3em] uppercase font-bold mb-2 opacity-80">
+                SEDE EN EUROPA - ALCANCE GLOBAL
+              </div>
+              <!-- Main Title -->
+              <h1 class="text-5xl md:text-7xl font-black mb-1 leading-tight drop-shadow-2xl hero-title">
+                VIPWELL EUROPE
+              </h1>
+              <h2 class="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+                Maquinaria y Plástico
+              </h2>
+            </div>
+
+            <!-- Right Info Group -->
+            <div class="hidden lg:flex flex-col items-end text-right">
+              <p class="text-xs text-white/90 font-medium max-w-[200px] mb-4 leading-relaxed">
+                Gestión global de equipos y servicios de inyección extrusión y más desde Europa
+              </p>
+              <div class="hero-glass-card">
+                <p>gestionando venta, importación de maquinaria y servicios de producción desde nuestra planta en Europa.</p>
+              </div>
+              
+              <!-- Seals -->
+              <div class="hero-stamp-block">
+                <div class="hero-stamp-icon"><i class="fas fa-certificate"></i></div>
+                <div class="hero-stamp-icon"><i class="fas fa-globe-europe"></i></div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <!-- Parallax Machine (Foreground) -->
-        <!-- *** USER: ADJUST POSITION HERE *** 
-             - 'right': Distance from right edge (e.g. -10% moves it further right)
-             - 'top': Distance from top edge 
-             - 'width': Size relative to screen width 
-        -->
-        <div class="parallax-layer absolute z-10 hidden lg:block pointer-events-none" 
-             data-speed="-0.1" 
-             style="right: 5%; top: 15%; width: 55%; transform: translateX(0);">
-             <img src="recursos/machine.png" alt="Machine" class="w-full h-full object-contain drop-shadow-2xl brightness-110">
-        </div>
-        
-        <!-- Empresa Logo (SVG) placed behind content with low opacity (moved to right) -->
-        <div class="parallax-layer absolute hidden lg:block pointer-events-none" data-speed="0.05" style="right: 14%; top: 15%; z-index:8;">
-            <img src="recursos/logo.svg" alt="Empresa Logo" class="hero-bg-logo">
-        </div>
-        <div class="container mx-auto px-4 z-20 relative grid grid-cols-1 lg:grid-cols-2 items-center h-full">
-            <!-- Left Content -->
-            <div class="text-left pt-20 pb-20 lg:pt-0 lg:pl-8">
-                <div class="inline-block px-3 py-1 mb-6 border border-orange-500 rounded-full text-orange-400 text-xs tracking-widest uppercase font-bold bg-slate-900/80 backdrop-blur-sm shadow-lg">
-                    Logística en Europa — Alcance Global
-                </div>
-                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight drop-shadow-lg">
-                    VIPWELL EUROPE<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Maquinaria y Plástico</span>
-                </h1>
-                <div class="pl-6 border-l-4 border-orange-500 mb-10 bg-slate-900/40 p-4 rounded-r-lg max-w-xl backdrop-blur-sm">
-                    <p class="text-lg md:text-xl text-slate-100 font-medium leading-relaxed">
-                        20 años gestionando venta, importación de maquinaria y servicios de producción desde nuestra planta en Europa.
-                    </p>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button onclick="navigateTo('catalog')" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded font-bold text-lg transition-all shadow-xl hover:shadow-orange-500/30 flex items-center justify-center gap-3">
-                        <i class="fas fa-search"></i> Ver Maquinaria
-                    </button>
-                    <button onclick="navigateTo('services')" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded font-bold text-lg transition-all backdrop-blur-md flex items-center justify-center gap-3">
-                        Servicios y Gestión <i class="fas fa-arrow-right text-sm"></i>
-                    </button>
-                </div>
+        <!-- Middle Section: Machines (Wider & Huge) -->
+        <!-- Layering: Machines (z-10) -> Shadow (z-20) -> Buttons (z-30) -->
+        <div class="relative hero-content-constraint grid grid-cols-1 md:grid-cols-3 gap-12 mt-auto items-end z-10">
+            <!-- Left Machine (L) -->
+            <div class="flex items-end justify-center parallax-layer" data-speed="-0.08">
+              <img src="recursos/L.png" alt="Máquina Izquierda" class="w-full h-auto object-contain drop-shadow-2xl hero-machine-left animate-enter-left">
             </div>
-            <!-- Right Space (Reserved for Image) -->
-            <div></div> 
+            
+            <!-- Center Machine (C) -->
+            <div class="flex items-end justify-center parallax-layer z-20" data-speed="-0.02">
+              <img src="recursos/C.png" alt="Máquina Centro" class="w-full h-auto object-contain drop-shadow-2xl relative z-20">
+            </div>
+            
+            <!-- Right Machine (R) -->
+            <div class="flex items-end justify-center parallax-layer" data-speed="-0.12">
+              <img src="recursos/R.png" alt="Máquina Derecha" class="w-full h-auto object-contain drop-shadow-2xl hero-machine-right animate-enter-right">
+            </div>
         </div>
+
+        <!-- Strong Bottom Shadow Gradient (Full screen width, positioned inside relative container to manage Z-index) -->
+        <!-- Z-Index Strategy: Machines (z-10) -> Shadow (z-20) -> Buttons (z-30) -->
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-64 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
+
+        <!-- Bottom Section: Buttons (Overlapping, Higher Z-Index) -->
+        <div class="w-full flex justify-center relative z-30 -mt-48 md:-mt-56 mb-8">
+          <div class="flex flex-col sm:flex-row gap-6">
+            <button onclick="navigateTo('catalog')" 
+                    class="hero-btn bg-orange-600 hover:bg-orange-700 text-white font-bold transition-all shadow-2xl hover:shadow-orange-500/50 hover:scale-105 flex items-center justify-center gap-3">
+              <i class="fas fa-search"></i>
+              Ver Maquinaria
+            </button>
+            <button onclick="navigateTo('services')" 
+                    class="hero-btn bg-slate-800/90 hover:bg-slate-700/90 border border-slate-500/50 text-white font-bold transition-all backdrop-blur-md hover:scale-105 flex items-center justify-center gap-3">
+              Servicios y Gestión
+              <i class="fas fa-arrow-right text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- (Removed External Shadow div) -->
+
     </section>
-    `;
+  `;
 }
 
 // Parallax Initialization
 let parallaxInstance = null;
+
 function initParallax() {
-    // Remove previous listener if exists (simple cleanup)
-    if (parallaxInstance) {
-        window.removeEventListener('scroll', parallaxInstance);
-    }
+  // Remove previous listener if exists
+  if (parallaxInstance) {
+    window.removeEventListener('scroll', parallaxInstance);
+  }
 
-    parallaxInstance = function () {
-        const scrolled = window.scrollY;
-        const layers = document.querySelectorAll('.parallax-layer');
+  parallaxInstance = function () {
+    const scrolled = window.scrollY;
+    const layers = document.querySelectorAll('.parallax-layer');
 
-        layers.forEach(layer => {
-            const speed = parseFloat(layer.getAttribute('data-speed'));
-            layer.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    };
+    layers.forEach(layer => {
+      const speed = parseFloat(layer.getAttribute('data-speed')) || 0;
+      // Apply transform based on scroll
+      layer.style.transform = `translateY(${scrolled * speed}px)`;
 
-    window.addEventListener('scroll', parallaxInstance);
+      // Re-apply scale for large machines manually if transform overwrites class style? 
+      // The class `hero-machine-large` applies scale(1.3). 
+      // If we set transform here, we overwrite it.
+      // We should apply the parallax to the wrapper div, and the scale to the img inside.
+      // The structure is div.parallax-layer > img.hero-machine-large.
+      // So moving the div won't affect the img scale. correct.
+    });
+  };
+
+  window.addEventListener('scroll', parallaxInstance);
 }

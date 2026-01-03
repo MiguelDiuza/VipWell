@@ -1,7 +1,7 @@
 function renderIntroSectionComponent() {
     return `
     <!-- INTRO SECTION -->
-    <section class="py-20 bg-slate-50">
+    <section class="py-12 bg-slate-50">
         <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h2 class="text-3xl font-bold text-slate-900 mb-6">Más que vendedores, somos sus socios operativos.</h2>

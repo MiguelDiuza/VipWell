@@ -24,12 +24,14 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/ciclointegral.css">
 </head>
 
 <body class="flex flex-col min-h-screen">
 
     <!-- HEADER (Sticky) -->
-    <header class="sticky top-0 z-50 bg-gray-900 text-white shadow-lg header-gradient">
+    <header class="fixed top-0 left-0 w-full z-[70] bg-gray-900 text-white shadow-lg header-gradient">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
@@ -94,9 +96,11 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-sm">
                 <!-- Column 1: Logo and Address -->
                 <div>
-                    <img src="recursos/logo.svg" alt="VIPWELL EUROPE" class="mb-4 w-16 md:w-24 brightness-0 invert opacity-60">
+                    <img src="recursos/logo.svg" alt="VIPWELL EUROPE"
+                        class="mb-4 w-16 md:w-24 brightness-0 invert opacity-60">
                     <h4 class="text-white text-lg font-bold mb-4">Hub Central</h4>
-                    <p class="mb-2"><i class="fas fa-map-marker-alt text-orange-500 mr-2"></i> Cam. de Valdecabañas, 28</p>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt text-orange-500 mr-2"></i> Cam. de Valdecabañas, 28
+                    </p>
                     <p class="mb-2 pl-6">Madrid, España</p>
                     <p class="mt-4"><i class="fas fa-phone text-orange-500 mr-2"></i> +34 912 345 678</p>
                     <p><i class="fas fa-envelope text-orange-500 mr-2"></i> operaciones@vipwelleurope.com</p>
@@ -106,11 +110,16 @@
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">Navegación</h4>
                     <ul class="space-y-2">
-                        <li><button onclick="navigateTo('home')" class="hover:text-white transition">Inicio</button></li>
-                        <li><button onclick="navigateTo('catalog')" class="hover:text-white transition">Catálogo</button></li>
-                        <li><button onclick="navigateTo('services')" class="hover:text-white transition">Servicios</button></li>
-                        <li><button onclick="navigateTo('about')" class="hover:text-white transition">Acerca de</button></li>
-                        <li><button onclick="navigateTo('contact')" class="hover:text-white transition">Contacto</button></li>
+                        <li><button onclick="navigateTo('home')" class="hover:text-white transition">Inicio</button>
+                        </li>
+                        <li><button onclick="navigateTo('catalog')"
+                                class="hover:text-white transition">Catálogo</button></li>
+                        <li><button onclick="navigateTo('services')"
+                                class="hover:text-white transition">Servicios</button></li>
+                        <li><button onclick="navigateTo('about')" class="hover:text-white transition">Acerca de</button>
+                        </li>
+                        <li><button onclick="navigateTo('contact')"
+                                class="hover:text-white transition">Contacto</button></li>
                     </ul>
                 </div>
 
@@ -118,17 +127,22 @@
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">Servicios</h4>
                     <ul class="space-y-2">
-                        <li><button onclick="navigateTo('catalog')" class="hover:text-white transition">Venta de Maquinaria</button></li>
-                        <li><button onclick="navigateTo('services')" class="hover:text-white transition">Importación Global</button></li>
-                        <li><button onclick="navigateTo('services')" class="hover:text-white transition">Servicio de Maquila (Plástico)</button></li>
-                        <li><button onclick="navigateTo('contact')" class="hover:text-white transition">Consultoría Logística</button></li>
+                        <li><button onclick="navigateTo('catalog')" class="hover:text-white transition">Venta de
+                                Maquinaria</button></li>
+                        <li><button onclick="navigateTo('services')" class="hover:text-white transition">Importación
+                                Global</button></li>
+                        <li><button onclick="navigateTo('services')" class="hover:text-white transition">Servicio de
+                                Maquila (Plástico)</button></li>
+                        <li><button onclick="navigateTo('contact')" class="hover:text-white transition">Consultoría
+                                Logística</button></li>
                     </ul>
                 </div>
 
                 <!-- Column 4: Certificaciones and Social -->
                 <div>
                     <h4 class="text-white text-lg font-bold mb-4">Certificaciones</h4>
-                    <p class="mb-4">Cumplimos con los más altos estándares de la Unión Europea y normativas de comercio internacional.</p>
+                    <p class="mb-4">Cumplimos con los más altos estándares de la Unión Europea y normativas de comercio
+                        internacional.</p>
                     <div class="flex space-x-4 text-2xl text-slate-500 mb-4">
                         <i class="fas fa-industry hover:text-white transition" title="ISO 9001"></i>
                         <i class="fas fa-shipping-fast hover:text-white transition" title="Global Logistics"></i>
@@ -136,10 +150,14 @@
                     </div>
                     <h5 class="text-white text-md font-semibold mb-2">Síguenos</h5>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>

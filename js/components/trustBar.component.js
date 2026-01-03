@@ -1,7 +1,7 @@
 function renderTrustBarComponent() {
     return `
     <!-- TRUST BAR -->
-    <section class="bg-white py-12 border-b border-gray-100 relative z-20 shadow-lg">
+    <section class="bg-white py-6 border-b border-gray-100 relative z-20 shadow-lg">
         <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div class="p-4 group hover:-translate-y-1 transition duration-300">
                 <i class="fas fa-map-marked-alt text-4xl text-slate-700 mb-3 group-hover:text-orange-500 transition"></i>

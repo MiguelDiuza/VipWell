@@ -1,8 +1,8 @@
 function renderFeaturedCatalogComponent() {
     return `
     <!-- FEATURED CATALOG PREVIEW -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 text-center mb-12">
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 text-center mb-8">
             <h2 class="text-3xl font-bold text-slate-900 mb-4">Maquinaria de Alto Rendimiento</h2>
             <p class="text-slate-500 max-w-2xl mx-auto">Venta directa y gestión de importación bajo pedido.</p>
         </div>
@@ -66,7 +66,7 @@ function renderFeaturedCatalogComponent() {
             </div>
 
             <!-- View All Button -->
-            <div class="mt-10 text-center">
+            <div class="mt-8 text-center">
                 <button onclick="navigateTo('catalog')" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-full font-bold transition shadow-lg">
                     VER TODO EL CATÁLOGO <i class="fas fa-arrow-right"></i>
                 </button>
@@ -74,7 +74,7 @@ function renderFeaturedCatalogComponent() {
         </div>
 
         <!-- SOURCING SECTION (Moved here from Catalog) -->
-        <div class="container mx-auto px-4 mt-20">
+        <div class="container mx-auto px-4 mt-12">
             <div class="bg-slate-50 p-10 rounded-2xl border border-dashed border-slate-300 text-center">
                 <div class="max-w-2xl mx-auto">
                     <span class="bg-orange-100 text-orange-700 text-xs font-black px-3 py-1 rounded-full uppercase tracking-tighter mb-4 inline-block">Sourcing Global</span>
