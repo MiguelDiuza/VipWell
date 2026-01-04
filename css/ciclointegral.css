@@ -7,6 +7,10 @@
     overflow: hidden;
     color: rgba(255, 255, 255, 0.87);
     font-family: 'Inter', sans-serif;
+    aspect-ratio: 16 / 9;
+    min-height: 550px;
+    isolation: isolate;
+    max-width: 100vw;
 }
 
 .ciclo-section .card {
@@ -17,6 +21,9 @@
     background-size: cover;
     box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.6);
     cursor: pointer;
+    overflow: hidden;
+    width: 100vw;
+    height: 100%;
 }
 
 .ciclo-section .card-content {
@@ -26,6 +33,8 @@
     color: rgba(255, 255, 255, 0.87);
     padding-left: 16px;
     pointer-events: none;
+    overflow: hidden;
+    max-height: 70px;
 }
 
 .ciclo-section .content-place {
@@ -34,7 +43,12 @@
     font-weight: 500;
 }
 
-.ciclo-section .content-title-1,
+.ciclo-section .content-title-1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .ciclo-section .content-title-2 {
     font-weight: 600;
     font-size: 20px;
@@ -287,4 +301,12 @@
     height: 100%;
     background-color: #202020;
     z-index: 100;
+}
+
+#ciclo-demo {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    left: 0;
+    top: 0;
 }

@@ -1,6 +1,6 @@
 function renderContact() {
     mainContent.innerHTML = `
-    <section class="bg-slate-900 text-white py-12">
+    <section class="bg-slate-900 text-white pt-32 pb-12">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl font-bold">Contáctenos</h1>
             <p class="text-slate-400 mt-2">Estamos listos para gestionar su proyecto industrial.</p>

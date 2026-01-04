@@ -56,7 +56,7 @@
 .hero-bg-position {
     /* CONTROLAR POSICION DE IMAGEN DE FONDO (Vertical) */
     /* Modificar el segundo valor (ej. 20%, -50px, center, bottom) */
-    object-position: center -10%;
+    object-position: center 20%;
 }
 
 .hero-title {
@@ -177,19 +177,9 @@
 
 /* ... existing code ... */
 
-.hero-machine-left:hover {
-    transform: scale(2.4) translateX(5%) translateY(-200px) !important;
-    /* Slightly larger than base 2.3 */
-    filter: brightness(1.1);
-    z-index: 50;
-}
 
-.hero-machine-right:hover {
-    transform: scale(2.6) translateX(-8%) translateY(-200px) !important;
-    /* Slightly larger than base 2.5 */
-    filter: brightness(1.1);
-    z-index: 50;
-}
+
+
 
 
 body {
@@ -361,19 +351,7 @@ body {
     animation: enterRight 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* Machine Hover Update: Just Scale, no move */
-.hero-machine-left,
-.hero-machine-right {
-    transition: transform 0.4s ease-out, filter 0.4s;
-}
 
-/* Hover animations removed as requested */
-.hero-machine-left:hover,
-.hero-machine-right:hover {
-    /* No hover effect */
-    transform: none;
-    filter: none;
-}
 
 /* Spacing Constraint for Content - Browser Unification */
 /* Refactorizado para evitar problemas de vw + scrollbar */
@@ -398,20 +376,28 @@ body {
 
 .hero-machine-large {
     /* MODIFICAR TAMAÑO DE MAQUINAS AQUI */
-    transform: scale(3.5);
+    transform: scale(3.8);
     /* Base Center */
     transform-origin: bottom center;
 }
 
 .hero-machine-left {
-    transform: scale(4.5) translateX(5%) translateY(-200px);
-    /* Massive Left */
+    transform: scale(1.1) translateX(2%) translateY(-220px);
+    /* Corrected Static Left */
     transform-origin: bottom center;
 }
 
 .hero-machine-right {
-    transform: scale(5.2) translateX(-8%) translateY(-200px);
-    /* Massive Right */
+    transform: scale(1.2) translateX(2%) translateY(-145px);
+    /* Corrected Static Right */
+    transform-origin: bottom center;
+}
+
+.hero-machine-center {
+    /* MODIFICAR POSICIÓN MÁQUINA CENTRAL */
+    /* translateY negativo (-50px) la sube, positivo la baja */
+    /* scale(1.0) mantiene el tamaño original */
+    transform: scale(1.0) translateY(-60px);
     transform-origin: bottom center;
 }
 

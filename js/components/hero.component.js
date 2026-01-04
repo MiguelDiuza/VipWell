@@ -62,7 +62,7 @@ function renderHeroComponent() {
                 Gestión global de equipos y servicios de inyección extrusión y más desde Europa
               </p>
               <div class="hero-glass-card">
-                <p>gestionando venta, importación de maquinaria y servicios de producción desde nuestra planta en Europa.</p>
+                <p>"Equipamos su planta con tecnología global o producimos por usted en Europa: La flexibilidad que su industria del plástico necesita."</p>
               </div>
               
               <!-- Seals -->
@@ -80,17 +80,17 @@ function renderHeroComponent() {
         <div class="relative hero-content-constraint grid grid-cols-1 md:grid-cols-3 gap-12 mt-auto items-end z-10">
             <!-- Left Machine (L) -->
             <div class="flex items-end justify-center parallax-layer" data-speed="-0.08">
-              <img src="recursos/L.png" alt="Máquina Izquierda" class="w-full h-auto object-contain drop-shadow-2xl hero-machine-left animate-enter-left">
+              <img src="recursos/L.png" alt="Máquina Izquierda" class="w-full h-auto object-contain drop-shadow-2xl hero-machine-left">
             </div>
             
             <!-- Center Machine (C) -->
             <div class="flex items-end justify-center parallax-layer z-20" data-speed="-0.02">
-              <img src="recursos/C.png" alt="Máquina Centro" class="w-full h-auto object-contain drop-shadow-2xl relative z-20">
+              <img src="recursos/C.png" alt="Máquina Centro" class="w-full h-auto object-contain drop-shadow-2xl relative z-20 hero-machine-center">
             </div>
             
             <!-- Right Machine (R) -->
             <div class="flex items-end justify-center parallax-layer" data-speed="-0.12">
-              <img src="recursos/R.png" alt="Máquina Derecha" class="w-full h-auto object-contain drop-shadow-2xl hero-machine-right animate-enter-right">
+              <img src="recursos/R.png" alt="Máquina Derecha" class="w-full h-auto object-contain drop-shadow-2xl hero-machine-right">
             </div>
         </div>
 

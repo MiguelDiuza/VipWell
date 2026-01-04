@@ -1,6 +1,6 @@
 function renderCatalog() {
     mainContent.innerHTML = `
-    <section class="bg-slate-900 text-white py-16">
+    <section class="bg-slate-900 text-white pt-32 pb-16">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl font-bold mb-4">Catálogo de Maquinaria</h1>
             <p class="text-slate-400 max-w-2xl mx-auto">Explore nuestras soluciones técnicas. Utilice los filtros para encontrar la máquina exacta para su línea de producción.</p>

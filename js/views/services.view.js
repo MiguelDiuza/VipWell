@@ -1,6 +1,6 @@
 function renderServices() {
     mainContent.innerHTML = `
-    <section class="bg-slate-800 text-white py-16">
+    <section class="bg-slate-800 text-white pt-32 pb-16">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl font-bold mb-6">Gestión Integral y Servicios</h1>
             <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-6">

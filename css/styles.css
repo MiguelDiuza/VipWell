@@ -7,6 +7,12 @@ body {
     /* Slate 800 */
 }
 
+header {
+    position: relative;
+    z-index: 100;
+}
+
+
 /* Chart Container Strict Styling */
 .chart-container {
     position: relative;
