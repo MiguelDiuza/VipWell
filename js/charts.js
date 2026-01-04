@@ -57,7 +57,7 @@ function initAboutCharts() {
                 labels: ['Venta Maquinaria', 'Servicio Maquila', 'Gestión Importación'],
                 datasets: [{
                     label: 'Volumen de Actividad',
-                    data: [50, 30, 20],
+                    data: [52.4, 28.9, 18.7],
                     backgroundColor: [
                         '#1e3a8a', // Blue
                         '#f97316', // Orange

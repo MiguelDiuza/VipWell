@@ -95,7 +95,7 @@ function renderFeaturedCatalogComponent() {
                     </p>
                     <button 
                         onclick="navigateTo('services')" 
-                        class="bg-slate-800 text-white px-8 py-3 rounded hover:bg-slate-700 transition font-bold shadow-md"
+                        class="bg-orange-600 text-white px-8 py-3 rounded-full hover:bg-orange-700 transition font-bold shadow-md"
                     >
                         Servicios de Sourcing & Importación
                     </button>
