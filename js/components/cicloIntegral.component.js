@@ -405,7 +405,8 @@ function performStep(dir = 1) {
     });
 
     gsap.set(".indicator", { x: -window.innerWidth });
-    gsap.to(".indicator", { x: 0, duration: 2, ease: "none" });
+    // Duration should match AUTO_DELAY (converted to seconds)
+    gsap.to(".indicator", { x: 0, duration: AUTO_DELAY / 1000, ease: "none" });
 }
 
 // ------------------------------------------------

@@ -381,24 +381,65 @@ body {
     transform-origin: bottom center;
 }
 
-.hero-machine-left {
-    transform: scale(1.1) translateX(2%) translateY(-220px);
-    /* Corrected Static Left */
+.hero-machine-center {
+    /* POSICIÓN MÁQUINA CENTRAL */
     transform-origin: bottom center;
+    /* Animation */
+    animation: enterCenterMachine 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    /* Start hidden for animation */
+}
+
+.hero-machine-left {
+    transform-origin: bottom center;
+    /* Animation: Starts after center machine arrives */
+    animation: enterLeftMachine 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+    opacity: 0;
 }
 
 .hero-machine-right {
-    transform: scale(1.2) translateX(2%) translateY(-145px);
-    /* Corrected Static Right */
     transform-origin: bottom center;
+    /* Animation: Starts after center machine arrives */
+    animation: enterRightMachine 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+    opacity: 0;
 }
 
-.hero-machine-center {
-    /* MODIFICAR POSICIÓN MÁQUINA CENTRAL */
-    /* translateY negativo (-50px) la sube, positivo la baja */
-    /* scale(1.0) mantiene el tamaño original */
-    transform: scale(1.0) translateY(-60px);
-    transform-origin: bottom center;
+@keyframes enterCenterMachine {
+    0% {
+        transform: scale(1.0) translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.0) translateY(-60px);
+        opacity: 1;
+    }
+}
+
+@keyframes enterLeftMachine {
+    0% {
+        /* Start from Center Machine Position (Behind) */
+        transform: scale(1) translateX(200px) translateY(-200px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.1) translateX(2%) translateY(-220px);
+        opacity: 1;
+    }
+}
+
+@keyframes enterRightMachine {
+    0% {
+        /* Start from Center Machine Position (Behind) */
+        transform: scale(1) translateX(-200px) translateY(-125px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.2) translateX(2%) translateY(-145px);
+        opacity: 1;
+    }
 }
 
 /* Parallax Speeds for machines will be handled via inline styles or JS,
