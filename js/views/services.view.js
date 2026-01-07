@@ -1,9 +1,9 @@
 function renderServices() {
     mainContent.innerHTML = `
-    <section class="bg-slate-800 text-white pt-32 pb-16">
+    <section class="bg-slate-900 text-white pt-32 pb-16">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl font-bold mb-6">Gestión Integral y Servicios</h1>
-            <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-6">
+            <h1 class="text-4xl font-bold mb-4">Gestión Integral y Servicios</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto">
                 En VIPWELL, somos su departamento externo de ingeniería y logística. No solo vendemos; localizamos, importamos y producimos.
             </p>
         </div>

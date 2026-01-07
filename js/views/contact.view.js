@@ -19,21 +19,21 @@ function renderContact() {
                             <div class="bg-orange-100 p-3 rounded-full mr-4 text-orange-600"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
                                 <p class="font-bold text-slate-900">Sede Central & Planta</p>
-                                <p class="text-slate-600">Cam. de Valdecabañas, 28<br>Madrid, España</p>
+                                <p class="text-slate-600">Cam. de Valdecabañas, Argada del rey, M 28500<br>Madrid, España</p>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div class="bg-orange-100 p-3 rounded-full mr-4 text-orange-600"><i class="fas fa-phone"></i></div>
                             <div>
                                 <p class="font-bold text-slate-900">Teléfonos</p>
-                                <p class="text-slate-600">+34 912 345 678 (Ventas)<br>+34 600 000 000 (WhatsApp)</p>
+                                <p class="text-slate-600">+34 916 12 44 85 (Ventas)<br>+34 666 666 666 (WhatsApp)</p>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div class="bg-orange-100 p-3 rounded-full mr-4 text-orange-600"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <p class="font-bold text-slate-900">Email</p>
-                                <p class="text-slate-600">ventas@vipwelleurope.com</p>
+                                <p class="text-slate-600">vipwelleuropesl71@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@ function renderContact() {
             <!-- Form -->
             <div class="bg-white p-8 rounded-xl shadow-xl border border-slate-100">
                 <h3 class="text-2xl font-bold text-slate-800 mb-6">Envíenos un mensaje</h3>
-                <form onsubmit="event.preventDefault(); alert('Mensaje simulado enviado. Gracias por contactar a VIPWELL.');" class="space-y-6">
+                <form onsubmit="event.preventDefault(); alert('Mensaje enviado. Gracias por contactar a VIPWELL.');" class="space-y-6">
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-2">Nombre</label>

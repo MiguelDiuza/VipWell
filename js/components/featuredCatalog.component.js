@@ -48,17 +48,43 @@ function renderFeaturedCatalogComponent() {
 
             <!-- Carousel Buttons -->
             <button 
-                onclick="scrollCarousel(-1)" 
-                class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg text-slate-800 ml-2 md:-ml-4 transition-all opacity-0 group-hover:opacity-100 border border-slate-200"
+                onclick="scrollCarousel(-1)"
+                aria-label="Anterior"
+                class="
+                    absolute z-20
+                    left-2 top-1/2 -translate-y-1/2
+                    lg:left-0
+                    w-12 h-12
+                    rounded-full
+                    bg-white/90 hover:bg-white
+                    shadow-xl border border-slate-200
+                    flex items-center justify-center
+                    text-slate-800
+                    transition-all
+                    opacity-100 lg:opacity-0 lg:group-hover:opacity-100
+                "
             >
-                <i class="fas fa-chevron-left text-xl"></i>
+                <i class="fas fa-chevron-left"></i>
             </button>
 
             <button 
-                onclick="scrollCarousel(1)" 
-                class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg text-slate-800 mr-2 md:-mr-4 transition-all opacity-0 group-hover:opacity-100 border border-slate-200"
+                onclick="scrollCarousel(1)"
+                aria-label="Siguiente"
+                class="
+                    absolute z-20
+                    right-2 top-1/2 -translate-y-1/2
+                    lg:right-0
+                    w-12 h-12
+                    rounded-full
+                    bg-white/90 hover:bg-white
+                    shadow-xl border border-slate-200
+                    flex items-center justify-center
+                    text-slate-800
+                    transition-all
+                    opacity-100 lg:opacity-0 lg:group-hover:opacity-100
+                "
             >
-                <i class="fas fa-chevron-right text-xl"></i>
+                <i class="fas fa-chevron-right"></i>
             </button>
 
             <!-- Carousel -->

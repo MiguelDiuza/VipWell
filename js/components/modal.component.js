@@ -1,10 +1,10 @@
 function renderModalComponent() {
     return `
     <!-- MODAL CONTAINER (Hidden by default) -->
-    <div id="product-modal" class="fixed inset-0 z-[60] hidden">
+    <div id="product-modal" class="fixed inset-0 z-[80] hidden">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
-            <div class="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto pointer-events-auto flex flex-col md:flex-row relative animate-modal">
+        <div class="absolute inset-0 flex items-center justify-center p-4 pt-20 pointer-events-none">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[85vh] overflow-y-auto pointer-events-auto flex flex-col md:flex-row relative animate-modal">
                 <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 z-10"><i class="fas fa-times text-2xl"></i></button>
                 <!-- Content injected by JS -->
                 <div id="modal-content" class="w-full flex flex-col md:flex-row"></div>
@@ -27,11 +27,11 @@ function openProductModal(pid) {
     content.innerHTML = `
         <!-- Left: Media -->
                 <div class="w-full md:w-1/2 bg-slate-900 p-6 text-white flex flex-col">
-                    <h2 class="text-2xl font-bold mb-2 md:hidden">${product.name}</h2> <!-- Mobile Title -->
+                    <h2 class="text-2xl font-bold mb-4 md:hidden">${product.name}</h2> <!-- Mobile Title -->
                     
                     <!-- Video Placeholder -->
-                    <div class="w-full aspect-video bg-black rounded-lg overflow-hidden mb-4 shadow-lg border border-slate-700 relative group">
-                        <img src="${product.video}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
+                    <div class="w-full aspect-video bg-black rounded-lg overflow-hidden mb-6 shadow-lg border border-slate-700 relative group">
+                        <img src="${product.video || product.image}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="w-16 h-16 bg-orange-500/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition cursor-pointer">
                                 <i class="fas fa-play text-white text-xl ml-1"></i>
@@ -39,10 +39,33 @@ function openProductModal(pid) {
                         </div>
                     </div>
 
-                    <!-- Tech Specs Radar Chart -->
-                    <div class="flex-grow flex flex-col justify-end">
-                        <h4 class="text-sm uppercase tracking-widest text-slate-400 mb-4 border-b border-slate-700 pb-2">Análisis de Rendimiento</h4>
-                        <div class="chart-container" style="height: 250px;">
+                    <!-- Toggle Section Header -->
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 id="toggle-section-title" class="text-sm uppercase tracking-widest text-slate-400">Vista de Máquina</h4>
+                        <button 
+                            id="toggle-image-btn" 
+                            onclick="toggleProductImage('${product.id}')"
+                            class="text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded-full transition flex items-center gap-2"
+                        >
+                            <i class="fas fa-exchange-alt"></i>
+                            <span id="toggle-btn-text">Ver Análisis</span>
+                        </button>
+                    </div>
+
+                    <!-- Machine Image View (visible by default) -->
+                    <div id="machine-image-view" class="w-full">
+                        <div class="w-full aspect-video bg-slate-800 rounded-lg overflow-hidden shadow-lg border border-slate-700">
+                            <img 
+                                src="${product.image}" 
+                                class="w-full h-full object-cover"
+                                alt="Vista de la máquina"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Performance Analysis View (hidden by default) -->
+                    <div id="performance-chart-view" class="hidden w-full">
+                        <div class="chart-container bg-slate-800 rounded-lg p-4 border border-slate-700" style="height: 350px;">
                             <canvas id="productRadarChart"></canvas>
                         </div>
                     </div>
@@ -51,7 +74,19 @@ function openProductModal(pid) {
                 <!-- Right: Info -->
     <div class="w-full md:w-1/2 p-8 bg-white overflow-y-auto">
         <h2 class="text-3xl font-bold text-slate-900 mb-1 hidden md:block">${product.name}</h2>
-        <p class="text-orange-600 font-medium mb-6 uppercase text-sm tracking-wide">${product.tagline}</p>
+        <p class="text-orange-600 font-medium mb-2 uppercase text-sm tracking-wide">${product.tagline}</p>
+        
+        <!-- Model Info Grid -->
+        <div class="grid grid-cols-2 gap-3 mb-6 text-xs">
+            <div class="bg-slate-50 px-3 py-2 rounded border border-slate-200">
+                <span class="text-slate-400 block">Modelo</span>
+                <span class="font-bold text-slate-800">${product.model}</span>
+            </div>
+            <div class="bg-slate-50 px-3 py-2 rounded border border-slate-200">
+                <span class="text-slate-400 block">Año</span>
+                <span class="font-bold text-slate-800">${product.year}</span>
+            </div>
+        </div>
 
         <p class="text-slate-600 mb-8 leading-relaxed">${product.desc}</p>
 
@@ -59,22 +94,12 @@ function openProductModal(pid) {
         <div class="bg-slate-50 rounded-lg p-6 border border-slate-100 mb-8">
             <h4 class="font-bold text-slate-900 mb-4"><i class="fas fa-cogs mr-2 text-slate-400"></i>Especificaciones Técnicas</h4>
             <div class="grid grid-cols-2 gap-4 text-sm">
-                <div class="border-b border-slate-200 pb-2">
-                    <span class="block text-slate-400 text-xs uppercase">Tonelaje / Carga</span>
-                    <span class="font-bold text-slate-800">${product.specs.tonnage}</span>
-                </div>
-                <div class="border-b border-slate-200 pb-2">
-                    <span class="block text-slate-400 text-xs uppercase">Ciclo Seco</span>
-                    <span class="font-bold text-slate-800">${product.specs.cycleTime}</span>
-                </div>
-                <div class="border-b border-slate-200 pb-2">
-                    <span class="block text-slate-400 text-xs uppercase">Potencia Motor</span>
-                    <span class="font-bold text-slate-800">${product.specs.power}</span>
-                </div>
-                <div class="border-b border-slate-200 pb-2">
-                    <span class="block text-slate-400 text-xs uppercase">Peso Máquina</span>
-                    <span class="font-bold text-slate-800">${product.specs.weight}</span>
-                </div>
+                ${Object.entries(product.specs).map(([key, value]) => `
+                    <div class="border-b border-slate-200 pb-2">
+                        <span class="block text-slate-400 text-xs uppercase">${formatSpecLabel(key)}</span>
+                        <span class="font-bold text-slate-800">${value}</span>
+                    </div>
+                `).join('')}
             </div>
         </div>
 
@@ -92,6 +117,9 @@ function openProductModal(pid) {
     modal.classList.remove('hidden');
     document.body.classList.add('overflow-hidden');
 
+    // Reset toggle state
+    isShowingPerformance = false;
+
     // Init Chart inside Modal (Calls function from charts.js which will be exported)
     if (window.initProductRadarChart) {
         window.initProductRadarChart(product);
@@ -102,4 +130,52 @@ function closeModal() {
     const modal = document.getElementById('product-modal');
     if (modal) modal.classList.add('hidden');
     document.body.classList.remove('overflow-hidden');
+}
+
+// Toggle between machine image and performance image
+let isShowingPerformance = false;
+function toggleProductImage(productId) {
+    const product = appData.products.find(p => p.id === productId);
+    if (!product) return;
+
+    const machineView = document.getElementById('machine-image-view');
+    const performanceView = document.getElementById('performance-chart-view');
+    const buttonText = document.getElementById('toggle-btn-text');
+    const sectionTitle = document.getElementById('toggle-section-title');
+
+    if (!machineView || !performanceView || !buttonText || !sectionTitle) return;
+
+    isShowingPerformance = !isShowingPerformance;
+
+    if (isShowingPerformance) {
+        // Show performance analysis
+        machineView.classList.add('hidden');
+        performanceView.classList.remove('hidden');
+        buttonText.textContent = 'Ver Máquina';
+        sectionTitle.textContent = 'Análisis de Rendimiento';
+    } else {
+        // Show machine image
+        machineView.classList.remove('hidden');
+        performanceView.classList.add('hidden');
+        buttonText.textContent = 'Ver Análisis';
+        sectionTitle.textContent = 'Vista de Máquina';
+    }
+}
+
+// Helper function to format spec labels
+function formatSpecLabel(key) {
+    const labels = {
+        tonnage: 'Tonelaje / Carga',
+        cycleTime: 'Ciclo Seco',
+        power: 'Potencia Motor',
+        weight: 'Peso Máquina',
+        shotVolume: 'Volumen de Inyección',
+        screwDiameter: 'Diámetro de Husillo',
+        outputRate: 'Capacidad de Producción',
+        pipeRange: 'Rango de Tubería',
+        reach: 'Alcance',
+        repeatability: 'Repetibilidad',
+        profileWidth: 'Ancho de Perfil'
+    };
+    return labels[key] || key;
 }
