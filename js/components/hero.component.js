@@ -123,29 +123,18 @@ function renderHeroComponent() {
 }
 
 // Parallax Initialization
-let parallaxInstance = null;
-
 function initParallax() {
-  // Remove previous listener if exists
+  if (window.innerWidth < 768) return; // ⛔ Mobile: NO parallax
+
   if (parallaxInstance) {
     window.removeEventListener('scroll', parallaxInstance);
   }
 
   parallaxInstance = function () {
     const scrolled = window.scrollY;
-    const layers = document.querySelectorAll('.parallax-layer');
-
-    layers.forEach(layer => {
-      const speed = parseFloat(layer.getAttribute('data-speed')) || 0;
-      // Apply transform based on scroll
+    document.querySelectorAll('.parallax-layer').forEach(layer => {
+      const speed = parseFloat(layer.dataset.speed) || 0;
       layer.style.transform = `translateY(${scrolled * speed}px)`;
-
-      // Re-apply scale for large machines manually if transform overwrites class style? 
-      // The class `hero-machine-large` applies scale(1.3). 
-      // If we set transform here, we overwrite it.
-      // We should apply the parallax to the wrapper div, and the scale to the img inside.
-      // The structure is div.parallax-layer > img.hero-machine-large.
-      // So moving the div won't affect the img scale. correct.
     });
   };
 

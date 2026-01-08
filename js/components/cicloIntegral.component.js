@@ -1,6 +1,6 @@
 function renderCicloIntegralComponent() {
     return `
-    <section class="ciclo-section bg-slate-900 overflow-hidden relative h-[550px] border-b border-slate-800 w-full">
+    <section class="ciclo-section bg-slate-900 overflow-hidden relative h-[550px] border-b border-slate-800 w-full" id="ciclo-section-main">
 
         <!-- INDICATOR -->
         <div class="indicator absolute top-0 left-0 right-0 h-1 bg-orange-500 z-40"></div>
@@ -9,8 +9,10 @@ function renderCicloIntegralComponent() {
         <div 
             id="ciclo-demo"
             class="absolute inset-0 h-full z-0"
-            style="width:100vw; left:50%; transform:translateX(-50%);">
-        </div>
+            style="width:100vw; left:50%; transform:translateX(-50%);"></div>
+
+        <!-- GRADIENT OVERLAY (SOMBRA DE IZQUIERDA A DERECHA) -->
+        <div class="ciclo-gradient-overlay absolute inset-0 z-0"></div>
 
         <!-- CONTENIDO ALINEADO A GRID -->
         <div class="container mx-auto px-4 relative h-full flex flex-col z-10">
@@ -32,7 +34,7 @@ function renderCicloIntegralComponent() {
                     <div class="title-2 uppercase text-2xl md:text-4xl lg:text-5xl font-bold leading-tight"
                          style="font-family:'Oswald',sans-serif;"></div>
                 </div>
-                <div class="desc text-slate-300 mt-2 md:mt-4 text-sm md:text-base lg:text-lg leading-relaxed line-clamp-3"></div>
+                <div class="desc text-slate-300 mt-2 md:mt-4 text-sm md:text-base lg:text-lg leading-relaxed line-clamp-4 md:line-clamp-3"></div>
                 <div class="cta mt-4 md:mt-8 pointer-events-auto">
                     <button onclick="navigateTo('services')"
                             class="discover border border-white px-4 md:px-6 py-2 rounded-full
@@ -60,7 +62,7 @@ function renderCicloIntegralComponent() {
                     <div class="title-2 uppercase text-2xl md:text-4xl lg:text-5xl font-bold leading-tight"
                          style="font-family:'Oswald',sans-serif;"></div>
                 </div>
-                <div class="desc text-slate-300 mt-2 md:mt-4 text-sm md:text-base lg:text-lg leading-relaxed line-clamp-3"></div>
+                <div class="desc text-slate-300 mt-2 md:mt-4 text-sm md:text-base lg:text-lg leading-relaxed line-clamp-4 md:line-clamp-3"></div>
                 <div class="cta mt-4 md:mt-8 pointer-events-auto">
                     <button onclick="navigateTo('services')"
                             class="discover border border-white px-4 md:px-6 py-2 rounded-full
@@ -72,17 +74,8 @@ function renderCicloIntegralComponent() {
             </div>
 
             <!-- PAGINATION -->
-            <div class="pagination absolute bottom-4 md:bottom-8 left-4 md:left-8 flex items-center z-50"
+            <div class="pagination absolute bottom-2 md:bottom-4 left-4 md:left-8 flex items-center z-50 mt-32 md:mt-40"
                  id="ciclo-pagination">
-                <div class="arrow arrow-left mr-2 md:mr-4 cursor-pointer hover:scale-110 transition-transform"
-                     onclick="cicloStep(-1)">
-                    <svg class="w-8 md:w-10 h-8 md:h-10 text-white" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M15.75 19.5L8.25 12l7.5-7.5"/>
-                    </svg>
-                </div>
-
                 <div class="arrow arrow-right mr-3 md:mr-6 cursor-pointer hover:scale-110 transition-transform"
                      onclick="cicloStep(1)">
                     <svg class="w-8 md:w-10 h-8 md:h-10 text-white" fill="none"
@@ -98,7 +91,7 @@ function renderCicloIntegralComponent() {
                     </div>
                 </div>
 
-                <div class="slide-numbers ml-3 md:ml-6 text-white text-2xl md:text-3xl font-bold
+                <div class="slide-numbers hidden md:flex ml-3 md:ml-6 text-white text-2xl md:text-3xl font-bold
                             w-8 md:w-10 text-center relative overflow-hidden h-8 md:h-10"
                      id="ciclo-slide-numbers"></div>
             </div>
@@ -116,8 +109,38 @@ let cicloOrder = [0, 1, 2, 3];
 let cicloDetailsEven = true;
 let cicloInitialized = false;
 let autoTimer = null;
+let cicloPageHidden = false;
 
 const AUTO_DELAY = 6000;
+
+// ------------------------------------------------
+// VISIBILITY CHANGE HANDLER
+// ------------------------------------------------
+function handleCicloVisibilityChange() {
+    const section = document.getElementById("ciclo-section-main");
+    if (!section) return;
+    
+    if (document.hidden || !isElementInViewport(section)) {
+        cicloPageHidden = true;
+        clearTimeout(autoTimer);
+        // Detener todas las animaciones GSAP del componente
+        gsap.to(".ciclo-section *", { autoKill: false }, 0);
+    } else {
+        cicloPageHidden = false;
+        // Reanudar autoplay si estaba activo
+        if (cicloInitialized) {
+            startAutoPlay();
+        }
+    }
+}
+
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top < window.innerHeight &&
+        rect.bottom > 0
+    );
+}
 
 // ------------------------------------------------
 // INIT
@@ -133,6 +156,11 @@ function initCicloIntegralAnimation() {
         setTimeout(initCicloIntegralAnimation, 100);
         return;
     }
+
+    // Add visibility change listeners
+    document.addEventListener("visibilitychange", handleCicloVisibilityChange);
+    window.addEventListener("blur", handleCicloVisibilityChange);
+    window.addEventListener("focus", handleCicloVisibilityChange);
 
     // Render cards
     demo.innerHTML =
@@ -150,11 +178,7 @@ function initCicloIntegralAnimation() {
                 (i, idx) => `
         <div class="card-content absolute bottom-6 left-4 p-4 text-white z-40 pointer-events-none hidden md:block"
              id="ciclo-card-content-${idx}">
-            <div class="content-start w-6 h-1 bg-white rounded-full mb-2"></div>
             <div class="content-place text-xs uppercase tracking-widest opacity-90">${i.place}</div>
-            <div class="content-title-1 text-sm uppercase font-bold" style="font-family:'Oswald',sans-serif;">
-                ${i.title}
-            </div>
         </div>`
             )
             .join("");

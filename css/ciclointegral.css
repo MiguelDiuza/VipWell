@@ -112,7 +112,6 @@
 }
 
 @media (min-width: 768px) {
-
     .ciclo-section .details .title-1,
     .ciclo-section .details .title-2 {
         font-size: 4rem;
@@ -120,7 +119,6 @@
 }
 
 @media (min-width: 1024px) {
-
     .ciclo-section .details .title-1,
     .ciclo-section .details .title-2 {
         font-size: 5rem;
@@ -135,14 +133,14 @@
     overflow: visible;
 }
 
-.ciclo-section .details>.desc {
+.ciclo-section .details > .desc {
     margin-top: 16px;
     max-width: 500px;
     font-size: 1.1rem;
     line-height: 1.6;
 }
 
-.ciclo-section .details>.cta {
+.ciclo-section .details > .cta {
     width: auto;
     /* Remove fixed width */
     margin-top: 32px;
@@ -150,7 +148,7 @@
     align-items: center;
 }
 
-.ciclo-section .details>.cta>.discover {
+.ciclo-section .details > .cta > .discover {
     border: 2px solid #f97316;
     background-color: #f97316;
     height: 44px;
@@ -163,7 +161,7 @@
     transition: all 0.3s;
 }
 
-.ciclo-section .details>.cta>.discover:hover {
+.ciclo-section .details > .cta > .discover:hover {
     background-color: transparent;
     color: #f97316;
 }
@@ -184,7 +182,7 @@
     }
 }
 
-.ciclo-section .pagination>.arrow {
+.ciclo-section .pagination > .arrow {
     width: 40px;
     height: 40px;
     border-radius: 999px;
@@ -196,25 +194,25 @@
 }
 
 @media (min-width: 768px) {
-    .ciclo-section .pagination>.arrow {
+    .ciclo-section .pagination > .arrow {
         width: 50px;
         height: 50px;
     }
 }
 
-.ciclo-section .pagination>.arrow:hover {
+.ciclo-section .pagination > .arrow:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-color: white;
 }
 
-.ciclo-section .pagination>.arrow svg {
+.ciclo-section .pagination > .arrow svg {
     width: 20px;
     height: 20px;
     color: white;
 }
 
 @media (min-width: 768px) {
-    .ciclo-section .pagination>.arrow svg {
+    .ciclo-section .pagination > .arrow svg {
         width: 24px;
         height: 24px;
     }
@@ -309,4 +307,99 @@
     width: 100vw;
     left: 0;
     top: 0;
+}
+
+/* Gradient overlay - sombra de izquierda a derecha */
+.ciclo-gradient-overlay {
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.2),
+        transparent
+    );
+    pointer-events: none;
+}
+
+/* ================================================= */
+/* ================= MOBILE FIXES ================== */
+/* ================================================= */
+
+@media (max-width: 767px) {
+
+    .ciclo-section {
+        height: auto;
+        min-height: 100vh;
+        aspect-ratio: auto;
+    }
+
+    .ciclo-section .details {
+        top: 8%;
+        left: 5%;
+        max-width: 90%;
+    }
+
+    .ciclo-section .details .title-1,
+    .ciclo-section .details .title-2 {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+
+    .ciclo-section .details .title-box-1,
+    .ciclo-section .details .title-box-2 {
+        margin-top: 6px;
+    }
+
+    .ciclo-section .details > .desc {
+        font-size: 0.95rem;
+        line-height: 1.55;
+        margin-top: 12px;
+        max-width: 100%;
+    }
+
+    .ciclo-section .details > .cta {
+        margin-top: 20px;
+    }
+
+    .ciclo-section .details > .cta > .discover {
+        height: 40px;
+        font-size: 13px;
+        padding: 4px 24px;
+    }
+
+    .ciclo-section .card-content {
+        max-height: none;
+        padding-left: 12px;
+    }
+
+    .ciclo-section .content-title-2 {
+        font-size: 16px;
+    }
+
+    .ciclo-section .content-place {
+        font-size: 12px;
+    }
+
+    /* Hide progress bar on mobile */
+    .ciclo-section .pagination .progress-sub-container {
+        display: none;
+    }
+
+    .ciclo-section .pagination {
+        gap: 12px;
+    }
+}
+@media (max-width: 767px) {
+    .ciclo-section .details {
+        max-width: 85%;
+    }
+
+    .ciclo-section .details > .desc {
+        max-width: 95%;
+    }
+
+    .ciclo-section .details .title-1,
+    .ciclo-section .details .title-2 {
+        max-width: 90%;
+    }
 }

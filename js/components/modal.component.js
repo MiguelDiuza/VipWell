@@ -29,14 +29,21 @@ function openProductModal(pid) {
                 <div class="w-full md:w-1/2 bg-slate-900 p-6 text-white flex flex-col">
                     <h2 class="text-2xl font-bold mb-4 md:hidden">${product.name}</h2> <!-- Mobile Title -->
                     
-                    <!-- Video Placeholder -->
-                    <div class="w-full aspect-video bg-black rounded-lg overflow-hidden mb-6 shadow-lg border border-slate-700 relative group">
-                        <img src="${product.video || product.image}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 bg-orange-500/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition cursor-pointer">
-                                <i class="fas fa-play text-white text-xl ml-1"></i>
-                            </div>
-                        </div>
+                    <!-- Video Section -->
+                    <div class="w-full aspect-video bg-black rounded-lg overflow-hidden mb-6 shadow-lg border border-slate-700 relative">
+                        ${product.video ? `
+                            <video 
+                                class="w-full h-full object-cover" 
+                                controls 
+                                preload="none"
+                                poster="${product.image}"
+                            >
+                                <source src="${product.video}" type="video/mp4">
+                                Tu navegador no soporta la reproducción de videos.
+                            </video>
+                        ` : `
+                            <img src="${product.image}" class="w-full h-full object-cover" alt="${product.name}">
+                        `}
                     </div>
 
                     <!-- Toggle Section Header -->

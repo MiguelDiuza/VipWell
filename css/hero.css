@@ -444,3 +444,132 @@ body {
 
 /* Parallax Speeds for machines will be handled via inline styles or JS,
    but specific classes can be added here if needed */
+
+/* =====================================
+   HERO – MOBILE ONLY (SAFE OVERRIDES)
+   NO AFECTA DESKTOP
+   ===================================== */
+
+@media (max-width: 767px) {
+
+    /* HERO container */
+    .hero-section-height {
+        min-height: auto;
+        height: auto;
+        max-height: none;
+        overflow: hidden;
+        padding-bottom: 0 !important;
+        position: relative;
+    }
+
+    /* Layout - Posición relativa para las máquinas */
+    .hero-content-constraint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0;
+        position: relative;
+    }
+
+    /* Contenedor de máquinas - posición relativa */
+    .hero-content-constraint {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        position: relative;
+        min-height: 50vh;
+    }
+
+    /* Máquinas laterales - VISIBLES pero pequeñas y detrás */
+    .hero-machine-left,
+    .hero-machine-right {
+        display: block !important;
+        position: absolute !important;
+        animation: none !important;
+        opacity: 0.6 !important;
+        z-index: 1 !important;
+        width: 35% !important;
+        max-width: 140px !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    /* Máquina izquierda - posicionada a la izquierda */
+    .hero-machine-left {
+        left: 5% !important;
+        bottom: 80px !important;
+        transform: none !important;
+    }
+
+    /* Máquina derecha - posicionada a la derecha */
+    .hero-machine-right {
+        right: 5% !important;
+        bottom: 80px !important;
+        transform: none !important;
+    }
+
+    /* Máquina central - al frente y más grande */
+    .hero-machine-center {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+        position: relative !important;
+
+        max-width: 75%;
+        max-height: 42vh;
+        width: auto;
+        object-fit: contain;
+
+        margin: 0 auto 8px auto;
+    }
+
+    /* Sombra gradient - CORREGIDA para mobile */
+    /* Debe estar en el borde inferior del hero */
+    .hero-section-height>div>.absolute.bottom-0 {
+        bottom: 0 !important;
+        height: 200px !important;
+        background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.95) 0%,
+                rgba(0, 0, 0, 0.8) 30%,
+                rgba(0, 0, 0, 0.4) 60%,
+                transparent 100%) !important;
+    }
+
+    /* Eliminar empujes verticales heredados */
+    .hero-content-constraint>div {
+        margin-top: 0 !important;
+    }
+
+    /* Botones – contenedor */
+    .hero-section-height .z-30 {
+        width: 100%;
+        padding: 0 16px 24px 16px;
+        margin-top: 16px !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Botones */
+    .hero-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        max-width: 520px;
+
+        padding: 18px 20px;
+        font-size: 1rem;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    /* Limpieza visual */
+    .hero-logo-bg {
+        display: none;
+    }
+
+    .hero-bg-position {
+        object-position: center center;
+    }
+}
