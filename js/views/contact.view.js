@@ -26,7 +26,7 @@ function renderContact() {
                             <div class="bg-orange-100 p-3 rounded-full mr-4 text-orange-600"><i class="fas fa-phone"></i></div>
                             <div>
                                 <p class="font-bold text-slate-900">Teléfonos</p>
-                                <p class="text-slate-600">+34 916 12 44 85 (Ventas)<br>+34 666 666 666 (WhatsApp)</p>
+                                <p class="text-slate-600">+34 916 12 44 85 (Ventas)</p>
                             </div>
                         </div>
                         <div class="flex items-start">
