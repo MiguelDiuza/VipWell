@@ -27,19 +27,20 @@ function renderAbout() {
             <!-- Global Impact Chart Container -->
             <div class="mt-16 mb-12">
                 <h3 class="text-center text-xl font-bold mb-6">Operaciones Globales</h3>
-                
-                <!-- New Images Row -->
-                <div class="flex justify-center gap-4 mb-8">
-                    <img src="recursos/us.png" alt="Nosotros 1" class="w-1/2 md:w-5/12 rounded-lg shadow-lg object-cover h-48 md:h-64">
-                    <img src="recursos/us2.png" alt="Nosotros 2" class="w-1/2 md:w-5/12 rounded-lg shadow-lg object-cover h-48 md:h-64">
+
+                <!-- Single Image Row -->
+                <div class="flex justify-center mb-8">
+                    <img src="recursos/us.png" alt="Nosotros" class="w-4/5 md:w-3/4 rounded-lg shadow-lg object-cover h-65 md:h-80">
                 </div>
 
-                <div class="chart-container">
-                    <canvas id="globalChart"></canvas>
+                <div class="max-w-6xl mx-auto">
+                    <video id="aboutVideo" class="w-full rounded-lg shadow-lg" controls playsinline preload="metadata">
+                        <source src="recursos/vip.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
                 </div>
-                <p class="text-center text-sm text-slate-400 mt-2">Distribución de nuestras actividades por tipo</p>
+                <p class="text-center text-sm text-slate-400 mt-2">Nuestras operaciones en acción</p>
             </div>
-
             <div class="grid md:grid-cols-2 gap-8 mt-16">
                 <div class="bg-slate-50 p-6 rounded-lg border-l-4 border-orange-500">
                     <h4 class="font-bold text-slate-900 text-lg mb-2">Gestión Sin Fronteras</h4>

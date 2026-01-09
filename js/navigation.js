@@ -25,8 +25,19 @@ function navigateTo(viewName, productId = null) {
             initCicloIntegralAnimation();
         }
         initParallax();
+        if (typeof initHomeVideoControls === 'function') {
+            initHomeVideoControls();
+        }
+        if (typeof initVideoParallax === 'function') {
+            initVideoParallax();
+        }
     }
-    if (viewName === 'about') initAboutCharts();
+    if (viewName === 'about') {
+        initAboutCharts();
+        if (typeof initHomeVideoControls === 'function') {
+            initHomeVideoControls();
+        }
+    }
 
     // Deep Linking: Open product modal if ID is provided
     if (viewName === 'catalog' && productId) {

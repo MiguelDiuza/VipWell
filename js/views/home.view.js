@@ -5,5 +5,6 @@ function renderHome() {
         ${renderCicloIntegralComponent()}
         ${renderIntroSectionComponent()}
         ${renderFeaturedCatalogComponent()}
+        ${renderVideoComponent()}
     `;
 }

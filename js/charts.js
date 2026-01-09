@@ -47,37 +47,5 @@ function initProductRadarChart(product) {
 }
 
 function initAboutCharts() {
-    setTimeout(() => {
-        const canvas = document.getElementById('globalChart');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Venta Maquinaria', 'Servicio Maquila', 'Gestión Importación'],
-                datasets: [{
-                    label: 'Volumen de Actividad',
-                    data: [52.4, 28.9, 18.7],
-                    backgroundColor: [
-                        '#1e3a8a', // Blue
-                        '#f97316', // Orange
-                        '#64748b', // Gray
-                    ],
-                    borderRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { callbacks: { label: (c) => `${c.raw}% del negocio` } }
-                },
-                scales: {
-                    y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { callback: (v) => v + '%' } },
-                    x: { grid: { display: false } }
-                }
-            }
-        });
-    }, 100);
+    // Video now has autoplay attribute, no manual play needed
 }
