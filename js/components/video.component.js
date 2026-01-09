@@ -14,12 +14,7 @@ function renderVideoComponent() {
         <!-- Content -->
         <div class="container mx-auto px-4 max-w-4xl relative z-20 text-center text-white">
             <div id="videoTextContent" class="video-text-content opacity-0 transform translate-y-[-50px] transition-all duration-1000 ease-out">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Nuestras Operaciones en Acción
-                </h2>
-                <p class="text-xl md:text-2xl text-gray-200 mb-8">
-                    Conoce cómo trabajamos para conectar la industria global
-                </p>
+                <!-- Text content removed as requested -->
             </div>
         </div>
     </section>

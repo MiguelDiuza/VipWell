@@ -114,9 +114,6 @@ function openProductModal(pid) {
             <button class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded shadow transition" onclick="document.getElementById('contact-form-section') ? document.getElementById('contact-form-section').scrollIntoView() : (closeModal(), navigateTo('contact'))">
                 SOLICITAR COTIZACIÓN
             </button>
-            <button class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded transition flex items-center justify-center">
-                <i class="fas fa-file-pdf mr-2"></i> Descargar Ficha Técnica (PDF)
-            </button>
         </div>
     </div>
     `;
