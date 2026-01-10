@@ -124,7 +124,7 @@ function handleCicloVisibilityChange() {
         cicloPageHidden = true;
         clearTimeout(autoTimer);
         // Detener todas las animaciones GSAP del componente
-        gsap.to(".ciclo-section *", { autoKill: false }, 0);
+        gsap.killTweensOf(".ciclo-section *");
     } else {
         cicloPageHidden = false;
         // Reanudar autoplay si estaba activo

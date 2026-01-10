@@ -1,32 +1,6 @@
 window.initCicloIntegralAnimation = initCicloIntegralAnimation;
 window.cicloStep = cicloStep;
 
-// Video controls
-function initVideoControls() {
-    console.log('Initializing video controls...');
-
-    // Handle home video (about video now has manual controls)
-    const homeVideo = document.getElementById('homeVideo');
-    const homeTextContent = document.getElementById('videoTextContent');
-
-    if (homeVideo) {
-        // Add video event listeners for debugging and animations
-        homeVideo.addEventListener('loadstart', () => console.log('Home video loadstart'));
-        homeVideo.addEventListener('loadeddata', () => console.log('Home video loadeddata'));
-        homeVideo.addEventListener('canplay', () => console.log('Home video canplay'));
-        homeVideo.addEventListener('play', () => {
-            console.log('Home video started playing');
-            // Animate text when video starts playing
-            if (homeTextContent) {
-                homeTextContent.classList.remove('opacity-0', 'translate-y-[-50px]');
-                homeTextContent.classList.add('opacity-100', 'translate-y-0');
-            }
-        });
-        homeVideo.addEventListener('pause', () => console.log('Home video paused'));
-        homeVideo.addEventListener('error', (e) => console.log('Home video error:', e));
-    }
-}
-
 // Parallax effect for video background (only for home page)
 function initVideoParallax() {
     const homeVideo = document.getElementById('homeVideo');
@@ -76,12 +50,13 @@ function initVideoIntersectionObserver() {
                 console.log(`Video ${video.id} intersection:`, entry.isIntersecting, entry.intersectionRatio);
 
                 if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
-                    console.log(`Playing video ${video.id}`);
-                    video.play().catch(e => {
-                        console.log('Video autoplay failed:', e);
-                    });
+                    // console.log(`In viewport: ${video.id}`);
+                    // Removed auto-play for homeVideo to allow manual play with audio
+                    if (video.id !== 'homeVideo') {
+                        video.play().catch(e => console.log('Autoplay failed:', e));
+                    }
                 } else if (!entry.isIntersecting) {
-                    console.log(`Pausing video ${video.id}`);
+                    // console.log(`Pausing video ${video.id}`);
                     video.pause();
                 }
             });
@@ -102,6 +77,66 @@ function initVideoIntersectionObserver() {
     }, 500); // Longer delay to ensure videos are loaded
 }
 
+// Video controls
+function initVideoControls() {
+    console.log('Initializing video controls...');
+
+    // Handle home video (about video now has manual controls)
+    const homeVideo = document.getElementById('homeVideo');
+    const homeTextContent = document.getElementById('videoTextContent');
+
+    if (homeVideo) {
+        const updateUI = (state) => {
+            const btn = document.getElementById('videoPlayBtn');
+            const videoIcon = document.getElementById('videoIcon');
+            const overlay = document.getElementById('videoOverlay');
+
+            if (state === 'playing') {
+                if (btn) btn.style.opacity = "0.3";
+                if (videoIcon) {
+                    videoIcon.className = 'fas fa-pause text-3xl group-hover:scale-110 transition-transform';
+                }
+                if (overlay) overlay.classList.add('opacity-0');
+            } else {
+                if (btn) btn.style.opacity = "1";
+                if (videoIcon) {
+                    videoIcon.className = 'fas fa-play text-3xl ml-1 group-hover:scale-110 transition-transform';
+                }
+                if (overlay) overlay.classList.remove('opacity-0');
+            }
+        };
+
+        // Click on section to toggle
+        const videoSection = document.getElementById('videoSection');
+        if (videoSection) {
+            videoSection.style.cursor = 'pointer';
+            videoSection.onclick = (e) => {
+                // Only toggle if not clicking the button itself (which has its own toggleHomeVideo)
+                if (e.target.closest('#videoPlayBtn')) return;
+                if (typeof window.toggleHomeVideo === 'function') {
+                    window.toggleHomeVideo();
+                }
+            };
+        }
+
+        homeVideo.onplay = () => updateUI('playing');
+        homeVideo.onpause = () => updateUI('paused');
+        homeVideo.onended = () => updateUI('ended');
+
+        // Robust end detection
+        homeVideo.ontimeupdate = () => {
+            if (homeVideo.duration && homeVideo.currentTime >= homeVideo.duration - 0.1) {
+                if (!homeVideo.paused) {
+                    homeVideo.pause();
+                    updateUI('ended');
+                }
+            }
+        };
+
+        homeVideo.addEventListener('error', (e) => console.log('Home video error:', e));
+    }
+}
+
 // Initial Render
 window.addEventListener('DOMContentLoaded', () => {
     // Check for deep linking in URL hash or similar could go here
@@ -115,4 +150,5 @@ window.initHomeVideoControls = () => {
     console.log('initHomeVideoControls called');
     initVideoControls();
     initVideoIntersectionObserver();
+    initVideoParallax();
 };

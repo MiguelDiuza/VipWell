@@ -1,4 +1,6 @@
 function renderHeroComponent() {
+  // Declare parallaxInstance
+  var parallaxInstance;
   return `
     <!-- HERO SECTION (Nuevo Diseño) -->
     <section class="relative bg-slate-900 text-white flex items-center overflow-hidden hero-section-height">
