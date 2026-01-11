@@ -15,7 +15,7 @@ function navigateTo(viewName, productId = null) {
         case 'catalog': renderCatalog(); break;
         case 'services': renderServices(); break;
         case 'about': renderAbout(); break;
-        case 'contact': renderContact(); break;
+        case 'contact': renderContact(productId); break; // Reusing second param for machineId
         default: renderHome();
     }
 

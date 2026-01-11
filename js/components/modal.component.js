@@ -111,7 +111,7 @@ function openProductModal(pid) {
         </div>
 
         <div class="flex flex-col space-y-3">
-            <button class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded shadow transition" onclick="document.getElementById('contact-form-section') ? document.getElementById('contact-form-section').scrollIntoView() : (closeModal(), navigateTo('contact'))">
+            <button class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded shadow transition" onclick="closeModal(); navigateTo('contact', '${product.id}')">
                 SOLICITAR COTIZACIÓN
             </button>
         </div>
