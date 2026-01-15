@@ -97,7 +97,7 @@ function renderContact(machineId = null) {
 
                     <div>
                         <label class="block text-sm font-bold text-slate-700 mb-2">Detalles</label>
-                        <textarea id="message" rows="4" required class="w-full bg-slate-50 border border-slate-300 rounded p-3 focus:outline-none focus:border-orange-500" placeholder="Descripción de su proyecto..."></textarea>
+                        <textarea id="message" rows="4" required spellcheck="false" class="w-full bg-slate-50 border border-slate-300 rounded p-3 focus:outline-none focus:border-orange-500" placeholder="Descripción de su proyecto..."></textarea>
                     </div>
                     <button type="submit" id="submit-btn" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded transition shadow-lg flex items-center justify-center">
                         <span id="btn-text">ENVIAR SOLICITUD</span>
