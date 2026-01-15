@@ -46,14 +46,14 @@ function renderHeroComponent() {
             <!-- Central Titles -->
             <div class="flex-1 text-center mt-4">
               <!-- Top Badge (Solo texto blanco) -->
-              <div class="text-white text-[10px] md:text-xs tracking-[0.3em] uppercase font-bold mb-2 opacity-80">
+              <div class="hero-badge text-white text-[10px] md:text-xs tracking-[0.3em] uppercase font-bold mb-2 opacity-80">
                 SEDE EN EUROPA - ALCANCE GLOBAL
               </div>
               <!-- Main Title -->
               <h1 class="text-5xl md:text-7xl font-black mb-1 leading-tight drop-shadow-2xl hero-title">
                 VIPWELL EUROPE
               </h1>
-              <h2 class="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+              <h2 class="hero-subtitle text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
                 Maquinaria y Plástico
               </h2>
             </div>
@@ -150,44 +150,36 @@ function initHeroAnimations() {
   const tl = gsap.timeline();
 
   // Initial state (hidden)
-  gsap.set(['.hero-machine-center', '.hero-machine-left', '.hero-machine-right'], {
-    y: 100,
-    opacity: 0,
-    scale: 0.9
-  });
-
   gsap.set('.hero-title', { y: 30, opacity: 0 });
-  gsap.set('.hero-glass-card', { opacity: 0, x: -20 });
+  gsap.set('.hero-glass-card', { x: -20, opacity: 0 });
+  gsap.set(['.hero-badge', '.hero-subtitle', '.hero-slogan', '.hero-stamp-block'], { opacity: 0 });
 
   // Animation sequence
-  tl.to('.hero-machine-center', {
+  tl.to('.hero-title', {
     y: 0,
     opacity: 1,
-    scale: 1,
-    duration: 1.2,
-    ease: "power4.out"
+    duration: 1,
+    ease: "back.out(1.7)"
   })
-    .to(['.hero-machine-left', '.hero-machine-right'], {
-      y: 0,
+    .to(['.hero-badge', '.hero-subtitle'], {
       opacity: 1,
-      scale: 1,
       duration: 1,
-      ease: "power3.out",
-      stagger: 0.2
+      stagger: 0.1,
+      ease: "power2.out"
     }, "-=0.8")
-    .to('.hero-title', {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "back.out(1.7)"
-    }, "-=1")
     .to('.hero-glass-card', {
-      opacity: 1,
       x: 0,
+      opacity: 1,
       duration: 0.8,
       stagger: 0.1,
       ease: "power2.out"
-    }, "-=0.5");
+    }, "-=0.6")
+    .to(['.hero-slogan', '.hero-stamp-block'], {
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out"
+    }, "-=0.4");
 }
 
 window.initHeroAnimations = initHeroAnimations;
