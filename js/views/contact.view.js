@@ -27,6 +27,7 @@ function renderContact(machineId = null) {
                             <div>
                                 <p class="font-bold text-slate-900">Teléfonos</p>
                                 <p class="text-slate-600">+34 916 12 44 85 (Ventas)</p>
+                                <p class="text-slate-600">+34 610 659 207 (WhatsApp)</p>
                             </div>
                         </div>
                         <div class="flex items-start">

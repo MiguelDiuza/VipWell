@@ -142,3 +142,52 @@ function initParallax() {
 
   window.addEventListener('scroll', parallaxInstance);
 }
+
+// Entry Animations for Hero
+function initHeroAnimations() {
+  if (typeof gsap === 'undefined') return;
+
+  const tl = gsap.timeline();
+
+  // Initial state (hidden)
+  gsap.set(['.hero-machine-center', '.hero-machine-left', '.hero-machine-right'], {
+    y: 100,
+    opacity: 0,
+    scale: 0.9
+  });
+
+  gsap.set('.hero-title', { y: 30, opacity: 0 });
+  gsap.set('.hero-glass-card', { opacity: 0, x: -20 });
+
+  // Animation sequence
+  tl.to('.hero-machine-center', {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    duration: 1.2,
+    ease: "power4.out"
+  })
+    .to(['.hero-machine-left', '.hero-machine-right'], {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.2
+    }, "-=0.8")
+    .to('.hero-title', {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "back.out(1.7)"
+    }, "-=1")
+    .to('.hero-glass-card', {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out"
+    }, "-=0.5");
+}
+
+window.initHeroAnimations = initHeroAnimations;

@@ -137,9 +137,78 @@ function initVideoControls() {
     }
 }
 
+// --- PRELOADER & ASSET LOADING ---
+const criticalAssets = [
+    { type: 'image', url: 'recursos/bg.jpeg' },
+    { type: 'image', url: 'recursos/L.png' },
+    { type: 'image', url: 'recursos/C.png' },
+    { type: 'image', url: 'recursos/R.png' },
+    { type: 'image', url: 'recursos/logo.svg' },
+    { type: 'image', url: 'recursos/per.jpg' },
+    { type: 'video', url: 'recursos/vip.mp4' }
+];
+
+function loadAssets() {
+    let loadedCount = 0;
+    const totalAssets = criticalAssets.length;
+
+    const onAssetLoaded = () => {
+        loadedCount++;
+        // console.log(`Asset loaded: ${loadedCount}/${totalAssets}`);
+        if (loadedCount >= totalAssets) {
+            hidePreloader();
+        }
+    };
+
+    criticalAssets.forEach(asset => {
+        if (asset.type === 'image') {
+            const img = new Image();
+            img.src = asset.url;
+            img.onload = onAssetLoaded;
+            img.onerror = onAssetLoaded; // Proceed anyway on error
+        } else if (asset.type === 'video') {
+            const video = document.createElement('video');
+            video.src = asset.url;
+            video.preload = 'auto';
+
+            // Check if already loaded
+            if (video.readyState >= 3) {
+                onAssetLoaded();
+            } else {
+                video.oncanplaythrough = onAssetLoaded;
+                video.onerror = onAssetLoaded;
+            }
+        }
+    });
+
+    // Fallback security: hide anyway after 8 seconds
+    setTimeout(() => {
+        if (document.getElementById('preloader')) {
+            hidePreloader();
+        }
+    }, 8000);
+}
+
+function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader || preloader.classList.contains('fade-out')) return;
+
+    preloader.classList.add('fade-out');
+    document.body.classList.remove('loading-active');
+
+    // Trigger home animations if they exist
+    setTimeout(() => {
+        if (typeof initHeroAnimations === 'function') {
+            initHeroAnimations();
+        }
+    }, 500);
+}
+
 // Initial Render
 window.addEventListener('DOMContentLoaded', () => {
-    // Check for deep linking in URL hash or similar could go here
+    // Start loading assets immediately
+    loadAssets();
+
     if (typeof navigateTo === 'function') {
         navigateTo('home');
     }

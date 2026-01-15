@@ -58,7 +58,7 @@ function renderFeaturedCatalogComponent() {
                     rounded-full
                     bg-white/90 hover:bg-white
                     shadow-xl border border-slate-200
-                    flex items-center justify-center
+                    hidden md:flex items-center justify-center
                     text-slate-800
                     transition-all
                     opacity-100 lg:opacity-0 lg:group-hover:opacity-100
@@ -78,7 +78,7 @@ function renderFeaturedCatalogComponent() {
                     rounded-full
                     bg-white/90 hover:bg-white
                     shadow-xl border border-slate-200
-                    flex items-center justify-center
+                    hidden md:flex items-center justify-center
                     text-slate-800
                     transition-all
                     opacity-100 lg:opacity-0 lg:group-hover:opacity-100

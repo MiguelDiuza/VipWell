@@ -35,7 +35,7 @@ function renderIntroSectionComponent() {
             <!-- Image Content -->
             <div class="bg-slate-200 rounded-xl h-80 overflow-hidden relative shadow-xl group">
                 <img 
-                    src="recursos/per.jpeg" 
+                    src="recursos/per.jpg" 
                     alt="Logística y gestión industrial"
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 >
